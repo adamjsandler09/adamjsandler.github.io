@@ -132,6 +132,93 @@ footer{background:var(--ink);padding:68px 72px 36px}
 .green-cta h2{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:#fff;margin-bottom:14px}
 .green-cta p{font-size:16px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:32px}
 
+/* ── MOBILE NAV ── */
+.nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px;flex-shrink:0}
+.nav-mobile-toggle span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px}
+.nav-mobile-menu{display:none;position:fixed;inset:0;background:var(--white);z-index:999;flex-direction:column;padding:24px 28px;overflow-y:auto}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.nav-mobile-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--ink);line-height:1;padding:0}
+.nav-mobile-links{list-style:none;display:flex;flex-direction:column;gap:0;flex:1}
+.nav-mobile-links li{border-bottom:1px solid var(--border)}
+.nav-mobile-links li a{display:block;font-size:17px;font-weight:600;color:var(--ink);padding:16px 0;cursor:pointer}
+.nav-mobile-cta{margin-top:28px;display:flex;flex-direction:column;gap:10px}
+
+@media(max-width:900px){
+  nav{padding:0 24px;height:72px}
+  .nav-links,.nav-right .nav-btn,.nav-right #lang-toggle{display:none!important}
+  .nav-mobile-toggle{display:flex}
+
+  .ph1{font-size:36px}
+  .ph2{font-size:28px}
+  .ph3{font-size:22px}
+  .lead{font-size:16px}
+
+  .page-hdr{padding:52px 24px 44px}
+
+  /* Hero stack */
+  #page-home>div:first-child{grid-template-columns:1fr!important;min-height:auto!important}
+  #page-home>div:first-child>div:first-child{padding:56px 24px 44px!important}
+  #page-home>div:first-child>div:last-child{display:none!important}
+
+  .cs{padding:28px 24px;flex-wrap:wrap;gap:20px}
+  .cs-sep{display:none}
+  .cs-cta{margin-left:0;width:100%}
+
+  .sec{padding:52px 24px}
+  .g2{grid-template-columns:1fr!important;gap:40px}
+  .g3{grid-template-columns:1fr!important}
+
+  .svc,.svc:nth-child(3n+2),.svc:nth-child(3n){padding:24px 0;border-left:none!important;border-right:none!important}
+
+  .trust{grid-template-columns:1fr 1fr;gap:24px;padding:40px 24px}
+  .trust-q{grid-column:1/-1;font-size:20px}
+
+  .form-wrap{padding:28px 20px}
+  .f-2col{grid-template-columns:1fr}
+
+  footer{padding:44px 24px 28px}
+  .footer-grid{grid-template-columns:1fr!important;gap:32px}
+  .f-bottom{flex-direction:column;gap:8px;text-align:center}
+
+  .green-cta{padding:48px 24px}
+  .green-cta h2{font-size:28px}
+
+  .portrait{aspect-ratio:unset;min-height:220px}
+
+  /* 3-col process/approach grids */
+  .sec .g3>div[style]{padding:24px 0!important;border-left:none!important;border-right:none!important}
+
+  .uscis-table{font-size:12px}
+  .uscis-table th,.uscis-table td{padding:10px 10px}
+}
+
+@media(max-width:600px){
+  nav{padding:0 16px}
+  .nav-logo-name{font-size:16px}
+  .nav-logo-sub{font-size:9px}
+
+  .ph1{font-size:28px}
+  .ph2{font-size:22px}
+  .lead{font-size:15px}
+
+  .page-hdr{padding:36px 16px 32px}
+  .sec{padding:36px 16px}
+
+  .trust{grid-template-columns:1fr;padding:28px 16px}
+  .trust-q{font-size:18px}
+
+  .form-wrap{padding:20px 16px}
+
+  .green-cta{padding:36px 16px}
+  .green-cta h2{font-size:22px}
+  .green-cta p{font-size:14px}
+
+  footer{padding:32px 16px 20px}
+  .cs{padding:20px 16px}
+
+  .uscis-table th:nth-child(3),.uscis-table td:nth-child(3){display:none}
+}
 </style>
 </head>
 <body>
@@ -194,8 +281,34 @@ footer{background:var(--ink);padding:68px 72px 36px}
   <div class="nav-right">
     <button class="nav-btn" onclick="go('contact')">Schedule Consultation</button>
     <button id="lang-toggle" onclick="toggleLang()" style="font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;background:none;border:1px solid var(--border);color:var(--ink-mid);padding:14px 22px;cursor:pointer;transition:all .2s">EN · ES</button>
+    <button class="nav-mobile-toggle" onclick="document.getElementById('mob-nav').classList.add('open')" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile-menu" id="mob-nav">
+  <div class="nav-mobile-header">
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink)">Law Offices of Tucker H. Sandler</div>
+      <div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px">U.S. Immigration Law</div>
+    </div>
+    <button class="nav-mobile-close" onclick="document.getElementById('mob-nav').classList.remove('open')">&#x2715;</button>
+  </div>
+  <ul class="nav-mobile-links">
+    <li><a onclick="go('home');document.getElementById('mob-nav').classList.remove('open')">Home</a></li>
+    <li><a onclick="go('practice');document.getElementById('mob-nav').classList.remove('open')">Practice &amp; Services</a></li>
+    <li><a onclick="go('about');document.getElementById('mob-nav').classList.remove('open')">About the Firm</a></li>
+    <li><a onclick="go('faq');document.getElementById('mob-nav').classList.remove('open')">FAQs</a></li>
+    <li><a onclick="go('uscis');document.getElementById('mob-nav').classList.remove('open')">USCIS Resources</a></li>
+    <li><a onclick="go('contact');document.getElementById('mob-nav').classList.remove('open')">Contact</a></li>
+  </ul>
+  <div class="nav-mobile-cta">
+    <button class="nav-btn" style="width:100%;padding:16px;font-size:15px" onclick="go('contact');document.getElementById('mob-nav').classList.remove('open')">Schedule Consultation</button>
+    <button onclick="toggleLang()" style="font-family:'Nunito Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;background:none;border:1px solid var(--border);color:var(--ink-mid);padding:14px;cursor:pointer;width:100%">EN · ES</button>
+  </div>
+</div>
 
 <!-- ══════════════ HOME ══════════════ -->
 <div class="page active" id="page-home">
@@ -234,7 +347,7 @@ footer{background:var(--ink);padding:68px 72px 36px}
     <div class="cs-sep"></div>
     <div><div class="cs-label" id="t-cs-phone">Phone</div><div class="cs-val"><a href="tel:2132515501">(213) 251-5501</a></div></div>
     <div class="cs-sep"></div>
-    <div><div class="cs-label" id="t-cs-email">Email</div><div class="cs-val"><a href="mailto:sandlaws@aol.com">sandlaws@aol.com</a></div></div>
+    <div><div class="cs-label" id="t-cs-email">Email</div><div class="cs-val"><a href="/cdn-cgi/l/email-protection#c5b6a4aba1a9a4b2b685a4aaa9eba6aaa8"><span class="__cf_email__" data-cfemail="5c2f3d3238303d2b2f1c3d3330723f3331">[email&#160;protected]</span></a></div></div>
     <button class="cs-cta" onclick="go('contact')" id="cs-cta-text">Sign Up Online →</button>
   </div>
 
@@ -598,7 +711,7 @@ footer{background:var(--ink);padding:68px 72px 36px}
         <div><div style="font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px" id="t-contact-addr-label">Address</div><div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--ink);line-height:1.4">3435 Wilshire Blvd., Suite 2700<br>Los Angeles, CA 90010</div></div>
         <div><div style="font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px" id="t-contact-phone-label">Phone</div><div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--ink)"><a href="tel:2132515501">(213) 251-5501</a></div></div>
         <div><div style="font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px" id="t-cs-fax">Fax</div><div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--ink)">(213) 251-5502</div></div>
-        <div><div style="font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px" id="t-contact-email-label">Email</div><div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--ink)"><a href="mailto:sandlaws@aol.com">sandlaws@aol.com</a></div></div>
+        <div><div style="font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px" id="t-contact-email-label">Email</div><div style="font-family:'Playfair Display',serif;font-size:19px;color:var(--ink)"><a href="/cdn-cgi/l/email-protection#fb889a959f979a8c88bb9a9497d5989496"><span class="__cf_email__" data-cfemail="4a392b242e262b3d390a2b252664292527">[email&#160;protected]</span></a></div></div>
       </div>
       <div style="padding-top:36px;border-top:1px solid var(--border)">
         <div class="eyebrow" id="t-contact-expect">What to Expect</div>
@@ -612,36 +725,43 @@ footer{background:var(--ink);padding:68px 72px 36px}
     </div>
     <div class="form-wrap">
       <div id="t-contact-form-title" style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--ink);margin-bottom:28px">Sign Up for a Consultation</div>
-      <div class="f-2col">
-        <div class="f-row"><label class="f-label" id="t-form-fname">First Name</label><input class="f-input" id="t-ph-first" type="text" placeholder="First"></div>
-        <div class="f-row"><label class="f-label" id="t-form-lname">Last Name</label><input class="f-input" id="t-ph-last" type="text" placeholder="Last"></div>
+      <div id="form-success" style="display:none;background:var(--green-pale);border:1px solid var(--green-mid);padding:24px;text-align:center;margin-bottom:20px;border-radius:2px">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin-bottom:8px">Thank you for reaching out.</div>
+        <div style="font-size:14px;color:var(--ink-mid)">We'll be in touch shortly to confirm your consultation.</div>
       </div>
-      <div class="f-row"><label class="f-label" id="t-form-phone">Phone</label><input class="f-input" id="t-ph-phone" type="tel" placeholder="(213) 555-0100"></div>
-      <div class="f-row"><label class="f-label" id="t-form-email">Email</label><input class="f-input" id="t-ph-email" type="email" placeholder="you@example.com"></div>
-      <div class="f-row">
-        <label class="f-label" id="t-form-area">Area of Need</label>
-        <select class="f-select" id="t-select-area">
-          <option value="" id="t-sel-placeholder">Select a practice area...</option>
-          <optgroup id="t-og-tmp" label="Temporary Visas">
-            <option>H-1B Specialty Occupation</option><option>L-1 Intracompany Transfer</option>
-            <option>O-1 Extraordinary Ability</option><option>E-1 / E-2 Treaty Visa</option>
-            <option>K-1 Fiancée Visa</option><option>F-1 / M-1 Student Visa</option>
-            <option>TN / USMCA</option><option>Other Temporary Visa</option>
-          </optgroup>
-          <optgroup id="t-og-perm" label="Permanent Visas / Green Cards">
-            <option>Employment-Based (EB-1/2/3)</option><option>PERM Labor Certification</option>
-            <option>Family-Based Immigration</option><option>Alien Spouse</option>
-            <option>Asylum / Refugee</option><option>Diversity Visa Lottery</option><option>EB-5 Investor Visa</option>
-          </optgroup>
-          <optgroup id="t-og-other" label="Other">
-            <option>Deportation Defense / Removal</option><option>BIA or Federal Court Appeal</option>
-            <option>Not Sure / Other</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="f-row"><label class="f-label" id="t-form-desc">Brief Description (optional)</label><textarea id="t-ph-desc" class="f-textarea" placeholder="Tell us about your situation..."></textarea></div>
-      <button class="f-submit" id="t-contact-submit">Submit Consultation Request →</button>
-      <p class="f-note" id="t-contact-disclaimer">Contacting us does not establish an attorney-client relationship. We respond to all inquiries promptly.</p>
+      <div id="form-error" style="display:none;background:#fff0f0;border:1px solid #e0b0b0;padding:14px;text-align:center;margin-bottom:16px;font-size:13px;color:#a00">Something went wrong. Please try again or call us at (213) 251-5501.</div>
+      <form id="consult-form" onsubmit="submitConsultForm(event)">
+        <div class="f-2col">
+          <div class="f-row"><label class="f-label" id="t-form-fname">First Name</label><input class="f-input" id="t-ph-first" name="first_name" type="text" placeholder="First" required></div>
+          <div class="f-row"><label class="f-label" id="t-form-lname">Last Name</label><input class="f-input" id="t-ph-last" name="last_name" type="text" placeholder="Last" required></div>
+        </div>
+        <div class="f-row"><label class="f-label" id="t-form-phone">Phone</label><input class="f-input" id="t-ph-phone" name="phone" type="tel" placeholder="(213) 555-0100"></div>
+        <div class="f-row"><label class="f-label" id="t-form-email">Email</label><input class="f-input" id="t-ph-email" name="email" type="email" placeholder="you@example.com" required></div>
+        <div class="f-row">
+          <label class="f-label" id="t-form-area">Area of Need</label>
+          <select class="f-select" id="t-select-area" name="practice_area">
+            <option value="" id="t-sel-placeholder">Select a practice area...</option>
+            <optgroup id="t-og-tmp" label="Temporary Visas">
+              <option>H-1B Specialty Occupation</option><option>L-1 Intracompany Transfer</option>
+              <option>O-1 Extraordinary Ability</option><option>E-1 / E-2 Treaty Visa</option>
+              <option>K-1 Fiancée Visa</option><option>F-1 / M-1 Student Visa</option>
+              <option>TN / USMCA</option><option>Other Temporary Visa</option>
+            </optgroup>
+            <optgroup id="t-og-perm" label="Permanent Visas / Green Cards">
+              <option>Employment-Based (EB-1/2/3)</option><option>PERM Labor Certification</option>
+              <option>Family-Based Immigration</option><option>Alien Spouse</option>
+              <option>Asylum / Refugee</option><option>Diversity Visa Lottery</option><option>EB-5 Investor Visa</option>
+            </optgroup>
+            <optgroup id="t-og-other" label="Other">
+              <option>Deportation Defense / Removal</option><option>BIA or Federal Court Appeal</option>
+              <option>Not Sure / Other</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="f-row"><label class="f-label" id="t-form-desc">Brief Description (optional)</label><textarea id="t-ph-desc" name="description" class="f-textarea" placeholder="Tell us about your situation..."></textarea></div>
+        <button type="submit" class="f-submit" id="t-contact-submit">Submit Consultation Request →</button>
+        <p class="f-note" id="t-contact-disclaimer">Contacting us does not establish an attorney-client relationship. We respond to all inquiries promptly.</p>
+      </form>
     </div>
   </div>
 
@@ -657,7 +777,7 @@ footer{background:var(--ink);padding:68px 72px 36px}
 </div>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const T={en:{"nav-home":"Home","nav-practice":"Practice &amp; Services","nav-about":"About","nav-faq":"FAQs","nav-uscis":"USCIS","nav-contact":"Contact","nav-cta":"Schedule Consultation","nav-sub":"U.S. Immigration Law","hero-badge-text":"Immigration Law &middot; Los Angeles, CA","hero-h1-text":"No matter where<br>you're from, you deserve<br>a <em style=\"font-style:italic;color:var(--green)\">fair fight.</em>","hero-p-text":"The Law Offices of Tucker H. Sandler provides experienced, full-service legal representation in U.S. Immigration Law — for individuals, families, and businesses.","hero-btn1-text":"Schedule a Consultation","hero-btn2-text":"View Practice Areas","banner-msg":"<strong style=\"font-weight:600\">In these challenging times for immigration</strong> — Attorney Sandler is committed to fighting hard for you, your family, and your future in the United States.","banner-link-text":"Schedule a consultation &rarr;","about-eyebrow-text":"About the Firm","about-h2-text":"An established immigration practice<br>built on <em>trust and results.</em>","about-p-text":"The Law Offices of Tucker H. Sandler provides experienced, full-service legal advice in U.S. Immigration and Nationality Law.","about-btn-text":"Meet Tucker H. Sandler","cs-cta-text":"Sign Up Online &rarr;","t-practice-eyebrow":"Practice &amp; Services","t-practice-h1":"Full-service<br>immigration <em>representation.</em>","t-practice-lead":"We handle the full spectrum of U.S. immigration law — for individuals, families, and businesses of every size.","t-tab-temporary":"Temporary Visas","t-tab-permanent":"Permanent &amp; Green Cards","t-tab-deportation":"Deportation Defense","t-tab-process":"Our Process","t-tab-who":"Who We Serve","t-tmp-eye":"Temporary Visas","t-tmp-h2":"Work, study &amp; visit <em>visas.</em>","t-ps-svc-1-name":"Specialty Occupation","t-ps-svc-1-desc":"For professionals in specialty occupations — technology, engineering, finance, healthcare.","t-ps-svc-2-name":"Intracompany Transfers","t-ps-svc-2-desc":"For managers and executives (L-1A) and specialized knowledge employees (L-1B) transferring to a U.S. operation.","t-ps-svc-3-name":"Extraordinary Ability","t-ps-svc-3-desc":"For individuals with extraordinary ability in sciences, arts, education, business, or athletics.","t-ps-svc-4-name":"Treaty Traders &amp; Investors","t-ps-svc-4-desc":"For nationals of treaty countries engaged in substantial trade (E-1) or making qualifying investments (E-2).","t-ps-svc-5-name":"Fianc&eacute;e &amp; Spouse Visas","t-ps-svc-5-desc":"K-1 allows a foreign-national fianc&eacute;e to marry a U.S. citizen within 90 days. K-3 for faster spousal reunification.","t-ps-svc-6-name":"Student Visas","t-ps-svc-6-desc":"Academic (F-1) and vocational (M-1) student visas, including OPT and CPT work authorization.","t-ps-svc-7-name":"Asylum &amp; Refugee Status","t-ps-svc-7-desc":"Affirmative and defensive asylum representation, and adjustment from asylee or refugee status.","t-ps-svc-8-name":"Diversity Visa Lottery","t-ps-svc-8-desc":"Guidance for Diversity Visa selectees completing consular processing and adjustment of status.","t-ps-svc-9-name":"Naturalization &amp; Citizenship","t-ps-svc-9-desc":"Citizenship applications, N-400 preparation, interview coaching, and naturalization ceremony guidance.","t-ps-svc-10-name":"Removal Proceedings","t-ps-svc-10-desc":"Aggressive representation before immigration courts (EOIR) in all stages of removal proceedings.","t-ps-svc-11-name":"Board of Immigration Appeals","t-ps-svc-11-desc":"Appeals of immigration court decisions to the BIA, including briefing and oral argument.","t-ps-svc-12-name":"Federal Circuit Court Petitions","t-ps-svc-12-desc":"Petitions for review in the Federal Circuit Courts when BIA decisions must be challenged.","t-ps-svc-13-name":"Bond &amp; Detention Hearings","t-ps-svc-13-desc":"Representation at bond hearings to seek release from immigration detention.","t-ps-svc-14-name":"Cancellation of Removal","t-ps-svc-14-desc":"Applications for cancellation of removal for lawful permanent residents and non-permanent residents.","t-ps-svc-15-name":"Defensive Asylum","t-ps-svc-15-desc":"Defensive asylum applications filed as a defense against removal proceedings.","t-perm-eye":"Permanent Visas &amp; Green Cards","t-perm-h2":"Building your<br>future <em>here.</em>","t-dep-eye":"Deportation Defense","t-dep-h2":"Fighting for your<br>right to <em>stay.</em>","t-dep-lead":"Facing removal is one of the most serious situations a person can face. Tucker H. Sandler provides aggressive, experienced defense at every stage.","t-dep-btn1":"Contact Us Now","t-dep-btn2":"Read Removal FAQs","t-proc-eye":"Our Process","t-step01-label":"Step 01","t-step01-title":"Initial Consultation","t-step02-label":"Step 02","t-step02-title":"Case Strategy","t-step03-label":"Step 03","t-step03-title":"Document Preparation","t-step04-label":"Step 04","t-step04-title":"Filing &amp; Submission","t-step05-label":"Step 05","t-step05-title":"RFE &amp; Interview Prep","t-step06-label":"Step 06","t-step06-title":"Resolution &amp; Follow-Up","t-who-eye":"Who We Serve","t-who-h3-ind":"Individuals &amp; Families","t-who-ind-p":"Whether you're reuniting with a family member, pursuing a green card, or facing removal, we provide compassionate expert counsel.","t-ind-b1":"Family-based green card petitions","t-ind-b2":"Spousal and fianc&eacute;e visas","t-ind-b3":"Asylum and refugee protection","t-ind-b4":"Naturalization &amp; citizenship","t-ind-b5":"Deportation defense &amp; removal appeals","t-who-h3-biz":"Businesses &amp; Employers","t-who-biz-p":"From sponsoring a single key employee to managing a multinational workforce, we provide strategic immigration counsel.","t-biz-b1":"H-1B specialty occupation petitions","t-biz-b2":"L-1 intracompany transfer visas","t-biz-b3":"PERM labor certification","t-biz-b4":"EB-1/2/3 employment-based green cards","t-biz-b5":"E-2 treaty investor &amp; EB-5 investor visas","t-get-started":"Get Started","t-get-started-biz":"Get Started","t-cta-h2":"Ready to discuss your case?","t-cta-p":"Schedule a consultation with Tucker H. Sandler to understand your options.","t-cta-btn":"Schedule a Consultation","t-about-eyebrow":"About the Firm","t-about-h1":"Dedicated to<br><em>your</em> immigration journey.","t-about-lead":"An established Los Angeles immigration law firm with over 25 years of full-service experience.","t-portrait-name":"Tucker H. Sandler","t-tucker-title":"Founder &amp; Lead Counsel","t-tucker-eye":"Tucker H. Sandler","t-tucker-h2":"Your advocate<br>from start<br>to <em>finish.</em>","t-about-bio-lead":"The Law Offices of Tucker H. Sandler is an established law firm practicing in the area of U.S. Immigration and Nationality Law — handling complex immigration matters, litigation, and consular issues.","t-about-p1":"The firm successfully evaluates and provides solutions to individuals and businesses across the full spectrum of immigration law.","t-about-p2":"Additionally, the Law Offices of Tucker H. Sandler handles appeals through the BIA and Federal Courts for individuals in deportation proceedings.","t-about-p3":"Clients will experience professional, friendly service and will be active participants when making key decisions affecting their immigration case.","t-cred1":"Member, American Immigration Lawyers Association (AILA)","t-cred2":"Licensed, State Bar of California","t-cred3":"BIA Appeals &amp; Federal Circuit Court Representation","t-cred4":"Immigration Litigation &amp; Consular Issues","t-cred5":"3,000+ cases handled across all visa categories","t-approach-eye":"Our Approach","t-approach-h2":"How we work<br>with <em>clients.</em>","t-approach1-title":"Honest Assessment","t-approach1-body":"We give you a realistic picture of your case — strengths, risks, and options — so you can make informed decisions.","t-approach2-title":"Personal Involvement","t-approach2-body":"You work directly with Tucker H. Sandler throughout your case — not a paralegal or associate.","t-approach3-title":"Thorough Preparation","t-approach3-body":"Every petition, application, and filing is prepared with exacting attention to detail.","t-trust-q":"Your case deserves an attorney who truly <em>knows the law.</em>","t-trust-l1":"Cases Handled","t-trust-l2":"Years in Practice","t-trust-l3":"Member Firm","t-trust-l4":"Appeals &amp; Federal Courts","t-faq-eyebrow":"FAQs","t-faq-h1":"Common questions,<br><em>clear answers.</em>","t-faq-lead":"Immigration law is complex. These are general explanations — not legal advice for your specific case.","t-faq-jump":"Jump to","t-faq-link1":"Work Visas","t-faq-link2":"Family &amp; Spouse","t-faq-link3":"Business &amp; Investors","t-faq-link4":"Removal &amp; Appeals","t-faq-link5":"Green Cards &amp; Citizenship","t-faq-still":"Still have questions? Every case is different — schedule a personal consultation.","t-faq-cta":"Schedule a Consultation","t-faq-cat1":"Work Visas","t-faq-cat2":"Family &amp; Spouse","t-faq-cat3":"Business &amp; Investors","t-faq-cat4":"Removal &amp; Appeals","t-faq-cat5":"Green Cards &amp; Citizenship","t-fq-w1-q":"How do I enter the U.S. to work in a specialty occupation?","t-fq-w2-q":"How can I transfer employees to a U.S. operation?","t-fq-w3-q":"How can an individual with extraordinary abilities enter the U.S.?","t-fq-w4-q":"What options exist for Canadian and Mexican professionals?","t-fq-f1-q":"Can I sponsor my family for immigration to the U.S.?","t-fq-f2-q":"What is the process for sponsoring a spouse?","t-fq-f3-q":"Is there a temporary visa for fianc&eacute;es?","t-fq-b1-q":"What is the best way to enter the U.S. for a business venture?","t-fq-b2-q":"What is PERM labor certification and when is it required?","t-fq-r0-q":"I am in removal proceedings. What are my options?","t-fq-r1-q":"Can I appeal an immigration court decision?","t-fq-g1-q":"Where can I get more information about the Diversity Visa Lottery?","t-fq-g2-q":"Can I enter the U.S. briefly without a visa?","t-uscis-eyebrow":"USCIS Resources","t-uscis-h1":"Forms, fees &amp;<br><em>processing</em> times.","t-uscis-lead":"Official USCIS forms and current filing fees for the most commonly used immigration applications.","t-uscis-s1-eye":"Temporary Visa Forms","t-uscis-s1-h2":"Work &amp; visit <em>petitions.</em>","t-uscis-s2-eye":"Permanent Residence Forms","t-uscis-s2-h2":"Green card <em>applications.</em>","t-uscis-s3-eye":"Citizenship &amp; Other Forms","t-uscis-s3-h2":"Naturalization &amp; <em>travel.</em>","t-th-form":"Form","t-th-purpose":"Purpose","t-th-fee":"Filing Fee","t-th-link":"Link","t-th-form-2":"Form","t-th-purpose-2":"Purpose","t-th-fee-2":"Filing Fee","t-th-link-2":"Link","t-th-form-3":"Form","t-th-purpose-3":"Purpose","t-th-fee-3":"Filing Fee","t-th-link-3":"Link","t-td-i129":"Petition for Nonimmigrant Worker (H-1B, L-1, O-1, TN, E, P)","t-td-i539":"Application to Extend/Change Nonimmigrant Status","t-td-i765":"Application for Employment Authorization (EAD / OPT)","t-td-i129f":"Petition for Alien Fianc&eacute;(e) — K-1 Visa","t-td-ds160":"Online Nonimmigrant Visa Application (Consular Processing)","t-td-i130":"Petition for Alien Relative — Family-Based Immigration","t-td-i140":"Immigrant Petition for Alien Workers — Employment-Based","t-td-i485":"Application to Register Permanent Residence (Adjustment of Status)","t-td-i751":"Petition to Remove Conditions on Residence","t-td-i589":"Application for Asylum and Withholding of Removal","t-td-i730":"Refugee/Asylee Relative Petition","t-td-n400":"Application for Naturalization — U.S. Citizenship","t-td-n600":"Application for Certificate of Citizenship","t-td-i131":"Application for Travel Document (Advance Parole, Refugee Travel)","t-td-i90":"Application to Replace Permanent Resident Card","t-uscis-link1":"Check Processing Times","t-uscis-link1-desc":"View current USCIS processing times by form type and service center.","t-uscis-link2":"Track Your Case Status","t-uscis-link2-desc":"Enter your receipt number to track a pending USCIS petition or application.","t-uscis-link3":"Visa Bulletin","t-visa-bulletin-desc":"Monthly State Department Visa Bulletin showing priority dates for employment and family preference categories.","t-uscis-cta-h2":"Need help with a filing?","t-uscis-cta-p":"We handle every form, every step — so nothing gets missed.","t-contact-eyebrow":"Contact &amp; Consultations","t-contact-h1":"Let's talk about<br>your <em>case.</em>","t-contact-lead":"Every immigration matter starts with a conversation. Reach out with honest, experienced counsel.","t-contact-git":"Get in Touch","t-contact-h2b":"Contact<br>the <em>firm.</em>","t-cs-fax":"Fax","t-contact-expect":"What to Expect","t-expect1":"Experienced representation for individuals and businesses","t-expect2":"Complex immigration matters, litigation &amp; consular issues","t-expect3":"BIA appeals and Federal Court representation","t-expect4":"Prompt response to all inquiries","t-contact-form-title":"Sign Up for a Consultation","t-form-fname":"First Name","t-form-lname":"Last Name","t-form-phone":"Phone","t-form-email":"Email","t-form-area":"Area of Need","t-form-desc":"Brief Description (optional)","t-contact-submit":"Submit Consultation Request &rarr;","t-contact-disclaimer":"Contacting us does not establish an attorney-client relationship. We respond to all inquiries promptly.","t-contact-resources":"Helpful Resources","t-res1-title":"USCIS Forms &amp; Fees","t-res1-desc":"Access official USCIS forms, current filing fees, and form instructions.","t-res2-title":"Processing Times","t-res2-desc":"Check current USCIS processing times for your petition type and service center.","t-res3-title":"Case Status Tracker","t-res3-desc":"Track the status of a pending USCIS case using your receipt number.","t-home-faq-eye":"FAQs","t-home-faq-h2":"Common<br><em>questions,</em><br>clear answers.","t-home-faq-p":"Immigration law is complex. Here are answers to the most common questions we receive.","t-home-faq-btn":"View All FAQs","t-home-prac-eye":"Practice Areas","t-home-prac-h2":"How we<br>can <em>help.</em>","t-home-prac-link":"See all practice areas","t-home-about-eye":"About the Firm","t-hfq1":"How do I work in a specialty occupation in the U.S.?","t-hfq2":"Can I sponsor my family for a green card?","t-hs1-name":"Temporary Work Visas","t-hs2-name":"Employment-Based Green Cards","t-hs3-name":"Family-Based Immigration","t-hs4-name":"Asylum &amp; Refugee Status","t-hs5-name":"Deportation Defense","t-hs6-name":"Business &amp; Investor Visas",
 "t-practice-body-lead":"Everything we do — from the specific visa categories we handle to how we work with you — is driven by one goal: a successful outcome for your case.",
 "t-prac-main-h2":"Full-service<br>immigration <em>representation.</em>",
@@ -759,6 +879,32 @@ es:{"nav-home":"Inicio","nav-practice":"Pr&aacute;ctica y Servicios","nav-about"
 "t-fq-g2-q":"&iquest;Puedo entrar brevemente a EE.UU. sin visa?",
 "t-fqa-g2":"Los nacionales de pa&iacute;ses del Programa de Exenci&oacute;n de Visa (VWP) pueden ingresar hasta 90 d&iacute;as para turismo o negocios sin visa, con un ESTA aprobado. Los viajeros del VWP generalmente no pueden extender su estad&iacute;a ni cambiar de estatus. M&aacute;s de 40 pa&iacute;ses participan actualmente.","_ph":{"first":"Nombre","last":"Apellido","phone":"(213) 555-0100","email":"usted@ejemplo.com","desc":"Cuéntenos sobre su situación...","select":"Seleccione un área de práctica...","og-tmp":"Visas Temporales","og-perm":"Visas Permanentes / Tarjeta Verde","og-other":"Otro"}}};
 
+async function submitConsultForm(e){
+  e.preventDefault();
+  const form=document.getElementById('consult-form');
+  const btn=document.getElementById('t-contact-submit');
+  const errEl=document.getElementById('form-error');
+  const successEl=document.getElementById('form-success');
+  btn.disabled=true;btn.textContent='Sending…';
+  errEl.style.display='none';
+  try{
+    const res=await fetch('https://formspree.io/f/xlgppqwn',{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(form)
+    });
+    if(res.ok){
+      form.style.display='none';
+      successEl.style.display='block';
+    }else{
+      errEl.style.display='block';
+      btn.disabled=false;btn.textContent='Submit Consultation Request →';
+    }
+  }catch(err){
+    errEl.style.display='block';
+    btn.disabled=false;btn.textContent='Submit Consultation Request →';
+  }
+}
 const FEN=`<footer><div class="footer-grid"><div><div class="f-brand">Law Offices of Tucker H. Sandler</div><div class="f-brand-sub">U.S. Immigration Law</div><p class="f-about">Experienced, full-service immigration counsel for individuals and businesses in Los Angeles and nationwide.<br><br>3435 Wilshire Blvd., Ste 2700<br>Los Angeles, CA 90010<br>(213) 251-5501</p></div><div><div class="f-col-title">Pages</div><ul class="f-links"><li><a onclick="go('home')">Home</a></li><li><a onclick="go('practice')">Practice &amp; Services</a></li><li><a onclick="go('about')">About the Firm</a></li><li><a onclick="go('faq')">FAQs</a></li><li><a onclick="go('uscis')">USCIS Resources</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div><div><div class="f-col-title">Contact</div><ul class="f-links"><li><a href="tel:2132515501">(213) 251-5501</a></li><li><a href="mailto:sandlaws@aol.com">sandlaws@aol.com</a></li><li style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:300">3435 Wilshire Blvd., Ste 2700<br>Los Angeles, CA 90010</li></ul></div></div><div class="f-bottom"><span class="f-copy">&copy; 2026 Law Offices of Tucker H. Sandler. All rights reserved. Attorney advertising.</span><span class="f-aila">AILA Member Firm</span></div></footer>`;
 const FES=`<footer><div class="footer-grid"><div><div class="f-brand">Law Offices of Tucker H. Sandler</div><div class="f-brand-sub">Derecho de Inmigraci&oacute;n EE.UU.</div><p class="f-about">Asesor&iacute;a legal migratoria completa para individuos y empresas en Los &Aacute;ngeles y a nivel nacional.<br><br>3435 Wilshire Blvd., Ste 2700<br>Los Angeles, CA 90010<br>(213) 251-5501</p></div><div><div class="f-col-title">P&aacute;ginas</div><ul class="f-links"><li><a onclick="go('home')">Inicio</a></li><li><a onclick="go('practice')">Pr&aacute;ctica y Servicios</a></li><li><a onclick="go('about')">Sobre el Despacho</a></li><li><a onclick="go('faq')">Preguntas</a></li><li><a onclick="go('uscis')">Recursos USCIS</a></li><li><a onclick="go('contact')">Contacto</a></li></ul></div><div><div class="f-col-title">Contacto</div><ul class="f-links"><li><a href="tel:2132515501">(213) 251-5501</a></li><li><a href="mailto:sandlaws@aol.com">sandlaws@aol.com</a></li><li style="color:rgba(255,255,255,0.6);font-size:13px;font-weight:300">3435 Wilshire Blvd., Ste 2700<br>Los Angeles, CA 90010</li></ul></div></div><div class="f-bottom"><span class="f-copy">&copy; 2026 Law Offices of Tucker H. Sandler. All rights reserved. Attorney advertising.</span><span class="f-aila">Firma Miembro de AILA</span></div></footer>`;
 
